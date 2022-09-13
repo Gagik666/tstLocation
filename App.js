@@ -9,8 +9,8 @@ export default function App() {
   const [lat, setLat] = useState(0)
   const [long, setLong] = useState(0)
   const [color, setColor] = useState("aqua")
-  const fixLat = 40.5731434
-  const fixlong = 44.8170515
+  const fixLat = 40.5731
+  const fixlong = 44.8170
   const getLocation = async () => {
     try {
       await Location.requestForegroundPermissionsAsync()
@@ -21,23 +21,29 @@ export default function App() {
     } catch (error) {
       Alert.alert("error", "eror location")
     }
-
-    if ((fixLat >= (lat - 0.0002) || fixLat <= (lat + 0.0002)) 
-    && (fixlong >= (long - 0.0002) || fixlong <= (long + 0.0002))) {
-      console.log("stacvec");
+    const transformLat = []
+    const transformLong = []
+    let x = "" + lat 
+    let y = "" + long
+    for (let i = 0; i < 7; i++) {
+      transformLat.push(x[i])
+    }
+    for (let i = 0; i < 7; i++) {
+      transformLong.push(y[i])
+    }
+    if (fixLat == transformLat || fixlong  == transformLong) {
+      
       setColor("green")
     } else {
       setColor("red")
     }
-    
+    console.log(`fix lat ${fixLat} lat ${lat}`);
   } 
-
-  
 
   return (
     <View style={styles.container}>
-      <Text>40.5731434</Text>
-      <Text>44.8170515</Text>
+      <Text>40.5731</Text>
+      <Text>44.8170</Text>
       <TouchableOpacity 
       style = {{backgroundColor: `${color}`, padding: 10}}
       onPress = {() => getLocation()}
