@@ -10,18 +10,7 @@ export default function App() {
   const [long, setLong] = useState(0)
   const [color, setColor] = useState("aqua")
   const fixLat = 40.3553
-<<<<<<< HEAD
   const fixlong = 45.1238
-=======
-  const fixlong = 45.1240
-
-  let laat = lat + ""
-  let z = laat.length = 6
-
-  let loong = long + ""
-  let y = loong.length = 6
-
->>>>>>> f959426e9d2c7b4e1c51f53982b5808a9c7e5ec8
   const getLocation = async () => {
     try {
       await Location.requestForegroundPermissionsAsync()
@@ -44,23 +33,12 @@ export default function App() {
     }
     if (fixLat == +transformLat.join("") || fixlong == +transformLong.join("")) {
 
-<<<<<<< HEAD
-=======
-    if ((z === fixLat && y === fixlong)) {
-      console.log("stacvec");
->>>>>>> f959426e9d2c7b4e1c51f53982b5808a9c7e5ec8
       setColor("green")
     } else {
       setColor("red")
     }
-<<<<<<< HEAD
     console.log(`fix lat ${fixLat} lat ${+transformLat.join("")}`);
   }
-=======
-  }
-
-
->>>>>>> f959426e9d2c7b4e1c51f53982b5808a9c7e5ec8
 
   useEffect(() => {
     getLocation()
@@ -68,11 +46,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>40.3553</Text>
-<<<<<<< HEAD
       <Text>45.1238</Text>
-=======
-      <Text>45.1240</Text>
->>>>>>> f959426e9d2c7b4e1c51f53982b5808a9c7e5ec8
       <TouchableOpacity
         style={{ backgroundColor: `${color}`, padding: 10 }}
         onPress={() => getLocation()}
