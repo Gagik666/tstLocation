@@ -31,13 +31,13 @@ export default function App() {
     for (let i = 0; i < 7; i++) {
       transformLong.push(y[i])
     }
-    if (fixLat == transformLat || fixlong  == transformLong) {
+    if (fixLat == +transformLat.join("") || fixlong  == +transformLong.join("")) {
       
       setColor("green")
     } else {
       setColor("red")
     }
-    console.log(`fix lat ${fixLat} lat ${lat}`);
+    console.log(`fix lat ${fixLat} lat ${+transformLat.join("")}`);
   } 
 
   return (
