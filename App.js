@@ -9,12 +9,19 @@ export default function App() {
   const [lat, setLat] = useState(0)
   const [long, setLong] = useState(0)
   const [color, setColor] = useState("aqua")
-  const fixLat = 40.5731434
-  const fixlong = 44.8170515
+  const fixLat = 40.3553
+  const fixlong = 45.1240
+
+  let laat = lat + ""
+  let z = laat.length = 6
+
+  let loong = long + ""
+  let y = loong.length = 6
+
   const getLocation = async () => {
     try {
       await Location.requestForegroundPermissionsAsync()
-      const {coords: {latitude, longitude}} = await Location.getCurrentPositionAsync()
+      const { coords: { latitude, longitude } } = await Location.getCurrentPositionAsync()
       setLat(latitude)
       setLong(longitude)
       console.log(latitude, longitude);
@@ -22,25 +29,23 @@ export default function App() {
       Alert.alert("error", "eror location")
     }
 
-    if ((fixLat >= (lat - 0.0002) || fixLat <= (lat + 0.0002)) 
-    && (fixlong >= (long - 0.0002) || fixlong <= (long + 0.0002))) {
+    if ((z === fixLat && y === fixlong)) {
       console.log("stacvec");
       setColor("green")
     } else {
       setColor("red")
     }
-    
-  } 
+  }
 
-  
+
 
   return (
     <View style={styles.container}>
-      <Text>40.5731434</Text>
-      <Text>44.8170515</Text>
-      <TouchableOpacity 
-      style = {{backgroundColor: `${color}`, padding: 10}}
-      onPress = {() => getLocation()}
+      <Text>40.3553</Text>
+      <Text>45.1240</Text>
+      <TouchableOpacity
+        style={{ backgroundColor: `${color}`, padding: 10 }}
+        onPress={() => getLocation()}
       >
         <Text>Click</Text>
       </TouchableOpacity>
